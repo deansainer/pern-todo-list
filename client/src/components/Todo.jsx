@@ -7,8 +7,8 @@ const Todo = (props) => {
 
   async function deleteTodo(){
     try{
-      const response = await axios.delete(`http://localhost:3001/api/todos/${id}`)
-      console.log(response.status);
+      await axios.delete(`http://localhost:3001/api/todos/${id}`)
+      .then(response => console.log(response.status))
     } catch(error){
       console.error(error);
     }

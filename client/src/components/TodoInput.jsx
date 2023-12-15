@@ -6,12 +6,17 @@ const TodoInput = () => {
   const [description, setDescription] = useState('')
   
   async function onSubmitForm(event) {
-    event.preventDefault();
-    if (description){
-      axios.post('http://localhost:3001/api/todos', {description}, {  // same as: 'description' : description
-      headers: { 'Content-Type': 'application/json' },
-      })
-    }
+    try{
+      event.preventDefault();
+      if (description){
+        axios.post('http://localhost:3001/api/todos', {description}, {  // same as: 'description' : description
+        headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => console.log(response.status))
+      }
+    }catch(error){
+      console.error(error)
+      }
   }
 
   return (
