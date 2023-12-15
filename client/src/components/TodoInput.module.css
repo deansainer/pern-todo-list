@@ -1,0 +1,15 @@
+.todo_form{
+  width: 700px;
+  margin: 0 auto;
+}
+
+.form_input{
+    width: 600px;
+    height: 34px;
+}
+
+.form_btn{
+    width: 80px;
+    margin-left: 20px;
+    height: 34px;
+}
