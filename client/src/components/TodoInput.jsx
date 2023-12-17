@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from './TodoInput.module.css'
 import axios from 'axios'
 
-const TodoInput = () => {
+const TodoInput = (props) => {
   const [description, setDescription] = useState('')
   
   async function onSubmitForm(event) {
@@ -13,6 +13,7 @@ const TodoInput = () => {
         headers: { 'Content-Type': 'application/json' },
         })
         .then(response => console.log(response.status))
+        props.setTodos((prevTodos) => [...prevTodos, {description}])
       }
     }catch(error){
       console.error(error)

@@ -9,6 +9,7 @@ const Todo = (props) => {
     try{
       await axios.delete(`http://localhost:3001/api/todos/${id}`)
       .then(response => console.log(response.status))
+      
     } catch(error){
       console.error(error);
     }

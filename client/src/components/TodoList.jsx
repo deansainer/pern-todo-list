@@ -4,18 +4,17 @@ import axios from 'axios'
 import Todo from './Todo'
 import classes from './TodoList.module.css'
 
-const TodoList = () => {
-  const [todos, setTodos] = useState([])
+const TodoList = (props) => {
     useEffect(() => {
       axios
       .get('http://localhost:3001/api/todos')
-      .then(response => setTodos(response.data))
+      .then(response => props.setTodos(response.data))
     }, [])
 
     return (
       <div className={classes.todo_list}>
         <div>
-        {todos.map((todo) => (
+        {props.todos.map((todo) => (
           <Todo id={todo.id} description={todo.description}/>
         ))}
         </div>
