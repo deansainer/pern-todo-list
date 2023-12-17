@@ -7,13 +7,10 @@ const TodoInput = (props) => {
   
   async function onSubmitForm(event) {
     try{
-      event.preventDefault();
       if (description){
         axios.post('http://localhost:3001/api/todos', {description}, {  // same as: 'description' : description
         headers: { 'Content-Type': 'application/json' },
         })
-        .then(response => console.log(response.status))
-        props.setTodos((prevTodos) => [...prevTodos, {description}])
       }
     }catch(error){
       console.error(error)
@@ -22,7 +19,7 @@ const TodoInput = (props) => {
 
   return (
     <div className={classes.todo_form}>
-        <form onSubmit={onSubmitForm}>
+        <form onSubmit={onSubmitForm} action='/'>
           <input className={classes.form_input} value={description} onChange={(event) => setDescription(event.target.value)} type="text" placeholder="Finish my housework" id="todo"></input>
           <button className={classes.form_btn} type="submit">Add</button>
         </form>

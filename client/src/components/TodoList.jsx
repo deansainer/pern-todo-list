@@ -11,11 +11,12 @@ const TodoList = (props) => {
       .then(response => props.setTodos(response.data))
     }, [])
 
+
     return (
       <div className={classes.todo_list}>
         <div>
         {props.todos.map((todo) => (
-          <Todo id={todo.id} description={todo.description}/>
+          <Todo id={todo.id} description={todo.description} setTodos={props.setTodos} todos={props.todos}/>
         ))}
         </div>
       </div>
