@@ -23,8 +23,8 @@ class TodoController {
 
   async create_todo(req, res) {
     try {
-      const { description } = req.body;
-      const todo = await db.query('insert into todo (description) values ($1) returning *', [description]);
+      const { description, isCompleted } = req.body;
+      const todo = await db.query('insert into todo (description, is_completed) values ($1, $2) returning *', [description, isCompleted]);
       res.json(todo.rows[0]);
     } catch (error) {
       console.error("Error creating todo:", error);
