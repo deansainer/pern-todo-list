@@ -11,11 +11,10 @@ const Todo = (props) => {
     props.setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId))   //deletes from client side
   }
 
-  
 
 
   return (
-    <div className={classes.todo}>
+    <div className={props.todo.is_completed ? classes.completed_todo : classes.todo}>
       {props.todo.description}
       <div className={classes.actions}>
         <img src='https://cdn-icons-png.flaticon.com/128/3161/3161829.png?ga=GA1.1.1124197093.1701177500&semt=ais' alt='COMPLETED'className={classes.action_button}></img>

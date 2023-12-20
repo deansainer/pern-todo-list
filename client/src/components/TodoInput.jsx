@@ -9,7 +9,7 @@ const TodoInput = (props) => {
     event.preventDefault()
     try{
       if (description){
-        axios.post('http://localhost:3001/api/todos', {description: description, isCompleted: false}, {  // same as: 'description' : description
+        axios.post('http://localhost:3001/api/todos', {description: description, isCompleted: false}, {  // same as: {description}
         headers: { 'Content-Type': 'application/json' },
         })
         window.location = '/'
