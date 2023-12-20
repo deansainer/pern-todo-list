@@ -41,10 +41,11 @@ class TodoController {
     }
   }
 
-  async update_todo(req, res) {
+  async update_completed_value(req, res) {
     try {
-      const { description, id } = req.body;
-      const todo = await db.query('update todo set description=$1 where id=$2 returning *', [description, id]);
+      const {id} = req.params;
+      const { is_completed } = req.body;
+      const todo = await db.query('update todo set is_completed=$1 where id=$2 returning *', [is_completed, id]);
       res.json(todo.rows[0]);
     } catch (error) {
       console.error("Error updating todo:", error);
